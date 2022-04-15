@@ -52,7 +52,11 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-
+<dependency>
+	<groupId>org.springdoc</groupId>
+	<artifactId>springdoc-openapi-ui</artifactId>
+	<version>1.6.6</version>
+</dependency>
 		<!-- Dependência Banco de dados h2 -->
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -72,6 +76,7 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
+	
 
 	<build>
 		<plugins>
@@ -83,3 +88,4 @@
 	</build>
 
 </project>
+

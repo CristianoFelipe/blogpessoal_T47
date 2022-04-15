@@ -1,5 +1,7 @@
 package com.generation.blogpessoal.controller;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -17,11 +19,11 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import com.generation.blogpessoal.model.Usuario;
 import com.generation.blogpessoal.repository.UsuarioRepository;
 import com.generation.blogpessoal.service.UsuarioService;
+
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -37,7 +39,6 @@ public class UsuarioControllerTest {
     @Autowired
 	private UsuarioRepository usuarioRepository;
 	
-    @GetMapping
     
     
     @BeforeAll
@@ -98,7 +99,7 @@ public class UsuarioControllerTest {
 		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(usuarioUpdate);
 
 		ResponseEntity<Usuario> resposta = testRestTemplate
-			withBasicAuth("root", "root")
+			.withBasicAuth("root", "root")
 			.exchange("/usuarios/atualizar", HttpMethod.PUT, requisicao, Usuario.class);
 
 		assertEquals(HttpStatus.OK, resposta.getStatusCode());
